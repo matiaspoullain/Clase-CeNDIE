@@ -60,6 +60,10 @@ raiz.redondeada <- function(numero, n){
   round(salida, n)
 }
 
+raiz.redondeada(numero = 18, n = 2)
+
+raiz.redondeada(n = 2, numero = 18)
+
 raiz.redondeada(18, 2)
 
 
@@ -236,7 +240,7 @@ respiratorias %>%
 #Repetir los ejercicios de arriba pero usando tidyverse:
 respiratorias %>%
   filter(... | ...) %>%
-  select()
+  select(...)
 
 
 #Y muchas cosas mas
@@ -244,20 +248,113 @@ respiratorias %>%
 respiratorias %>%
   count(provincia_nombre, evento_nombre)
 
-respiratorias %>%
+respiratorias.prop <- respiratorias %>%
+  count(provincia_nombre, evento_nombre) %>%
+  group_by(provincia_nombre) %>%
+  mutate(total = sum(n),
+         prop = n / total,
+         porcentaje = prop * 100)
+
+respiratorias.prop
+
+respiratorias.prop.filtrado <- respiratorias.prop %>%
+  filter(prop == max(prop))
+
+respiratorias.prop.filtrado
+
+##### Gráficos: #####
+#R base tiene sus gráficos pero no son muy lindos y es dificil manejarlos:
+
+plot(x = respiratorias.prop.filtrado$provincia_nombre, y = respiratorias.prop.filtrado$porcentaje)
+
+
+#La libreria de gráfios por excelencia en R es ggplot2, ya viene cargada con tidyverse:
+
+ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop)) + #Linea base del ggplot, siempre tiene que estar
+  geom_col()
+
+ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, col = evento_nombre)) +
+  geom_col()
+
+ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
+  geom_col()
+
+ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
+  geom_col() +
+  theme_bw()
+
+
+#Ejercicio: Al gráfico anterior hacer que las barras no esten apiladas (stacked), sino una al lado de la otra (dodged) (buscar en google)
+
+ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
+  geom_col(...) +
+  theme_bw()
+
+#Ejercicio: al gráfico anterior, cambiarle los nombres de los ejes X e Y y el nombre del titulo de la leyenda (buscar en gogle):
+
+ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
+  geom_col(...) +
+  theme_bw() +
+  labs(...)
+
+#Ejercicio: Usar colores daltonico-friendly (buscar en google colores viridis):
+ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
+  geom_col(...) +
+  theme_bw() +
+  labs(...) +
+  scale_...()
+
+#Ejercicio: Ubicar la leyenda arriba del plot (buscar en las referencias de la funcion theme()):
+ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
+  geom_col(...) +
+  theme_bw() +
+  labs(...) +
+  scale_...() +
+  theme(legend....)
+
+
+
+#Facetas:
+ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
+  geom_col(position = "dodge", show.legend = FALSE) +
+  theme_bw() +
+  labs(x = "Provincia", y = "Proporción") +
+  scale_fill_viridis_d() +
+  facet_wrap(evento_nombre~., ncol = 1)
+
+#Reordenamiento de niveles de variables categoricas:
+ggplot(respiratorias.prop, aes(x = fct_reorder(provincia_nombre, prop, max, .desc = TRUE), y = prop, fill = evento_nombre)) +
+  geom_col(position = "dodge") +
+  theme_bw() +
+  labs(x = "Provincia", y = "Proporción", fill = "Evento:") +
+  scale_fill_viridis_d() +
+  theme(legend.position = "top")
+
+#ggplot puede ser encadenado con pipes y guardado como objeto:
+
+gg.respiratorias <- respiratorias %>%
   count(provincia_nombre, evento_nombre) %>%
   group_by(provincia_nombre) %>%
   mutate(total = sum(n),
          prop = n / total,
          porcentaje = prop * 100) %>%
-  filter(prop == max(prop))
+  ggplot(aes(x = fct_reorder(provincia_nombre, prop, max, .desc = TRUE), y = prop, fill = evento_nombre)) +
+  geom_col(position = "dodge") +
+  theme_bw() +
+  labs(x = "Provincia", y = "Proporción", fill = "Evento:") +
+  scale_fill_viridis_d() +
+  theme(legend.position = "top")
 
+#Se le pueden seguir agregando cosas:
+library(scales)
 
-##### Gráficos: #####
+gg.respiratorias <- gg.respiratorias +
+  scale_y_continuous(labels = percent, breaks = seq(0, 1, 0.1)) +
+  labs(y = "Porcentaje") +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 
+#Guardar un ggplot:   
+ggsave(filename = "Figuras/Mi primer ggplot.png", gg.respiratorias)
 
-
-
-
-
-
+#Mas grande:
+ggsave(filename = "Figuras/Mi primer gran ggplot.png", gg.respiratorias, width = 12, height = 6)
