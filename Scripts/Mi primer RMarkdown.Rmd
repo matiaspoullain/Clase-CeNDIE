@@ -1,0 +1,53 @@
+---
+title: "Mi primer RMarkdown"
+author: "Matías Poullain"
+date: "9/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "..")
+```
+
+## Introducción:
+
+Este es un RMarkdown, permite intercalar código con texto. Además es un potente lenguaje de programación para texto donde se pueden hacer muchas cosas de forma automatizada (desde PDFs hasta Powerpoints).
+
+Los códigos están encerrados en **CHUNKS**, todos los **chunks** se corren de forma secuencial y estan conectados a un mismo __ambiente__. Los chunks se crean con la __**c**__ verde de arriba de esta ventana.
+
+Primero, siempre, borramos todo lo anterior y cargamos las librerias:
+
+```{r inicial, message=FALSE, warning=FALSE}
+rm(list = ls())
+gc()
+
+library(tidyverse)
+library(DT)
+
+```
+
+## Datos:
+
+Carguemos los datos y chusmiemoslos:
+
+```{r }
+respiratorias <- read.csv("Datos/respiratorias.csv", stringsAsFactors = TRUE, encoding = "UTF-8")
+datatable(respiratorias[1:1000,])
+```
+
+## Gráficos:
+### Ejercicios:
+1. Crear un nuevo chunk
+2. Incluir un gráfico de **Casos** vs **semana epidemiologica** del **2020** en **Río Negro**, pintado por *evento_nombre*:
+  + Desde el objeto **respiratorias**, filtar al *anio* 2020 y *provincia_nombre* **Río Negro**
+  + Agrupar por *semanas_epidemiologicas* y *evento_nombre*
+  + *summarise* la **suma** de la **cantidad_casos**
+  + Iniciar el ggplot: en *aes()* especificar **x =**,**y =**, **col =**
+  + Sumar una geometría de línea: **geom_line()**
+  + Opcional: Modificar la estética del gráfico
+3. Imprima el RMarkdown con el botón **Knit**
+
+
+## Machetes:
+[Esta página](https://www.rstudio.com/resources/cheatsheets/) tiene muchos machetes útiles de lo que visto en la clase. Si bien, estos machetes pueden servir al principio, tarde o temprano tendrán que usar google para resolver problemas mas especificos

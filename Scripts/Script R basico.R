@@ -74,11 +74,15 @@ TRUE | FALSE
 !TRUE
 !FALSE
 
+TRUE == FALSE
+TRUE != FALSE
+
 (!TRUE | FALSE) & FALSE | (!TRUE | FALSE) & TRUE
 
 
 1 > 2
 1 == 1
+1 != 10
 vector <= 6
 
 vector[vector <= 6]
