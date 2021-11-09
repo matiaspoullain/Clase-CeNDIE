@@ -32,6 +32,14 @@ pi
 iris
 mtcars
 
+#Listas: sirven para almacenar objetos:
+lista.1 <- list(bienvenido = "soy el primer objeto de esta lista", objeto.1 = objeto.1, objeto.2 = objeto.2, objeto.3 = objeto.3, pi = pi, iris = iris, mtcars = mtcars)
+
+lista.1
+
+lista.1$mtcars
+
+
 ##### Funciones: ######
 # Hay muchas funciones predefinidas:
 sqrt(25)
@@ -44,9 +52,11 @@ floor(pi)
 
 log(objeto.20)
 
-vector <- c(4, 15, 2, 22, 1000, 0, 0, 6)
+vector <- c(4, 15, 2, 22, 1000, 0, 0, 6, NA)
 
 mean(vector)
+
+mean(vector, na.rm = TRUE)
 
 class(vector)
 
@@ -87,6 +97,8 @@ vector <= 6
 
 vector[vector <= 6]
 
+is.na(vector)
+vector[!is.na(vector)]
 
 ##### Tipo de datos: #####
 objeto.4 <- "hola"
