@@ -32,7 +32,7 @@ library(DT)
 Carguemos los datos y chusmiemoslos:
 
 ```{r }
-respiratorias <- read.csv("Datos/respiratorias.csv", stringsAsFactors = TRUE, encoding = "UTF-8")
+respiratorias <- read.csv("Clase-CeNDIE/Datos/respiratorias.csv", stringsAsFactors = TRUE, encoding = "UTF-8")
 datatable(respiratorias[1:1000,])
 ```
 
@@ -48,6 +48,22 @@ datatable(respiratorias[1:1000,])
   + Opcional: Modificar la estética del gráfico
 3. Imprima el RMarkdown con el botón **Knit**
 
+```{r}
+respiratorias %>%
+  filter(anio == 2020 & provincia_nombre == "Río Negro") %>%
+  group_by(semanas_epidemiologicas, evento_nombre) %>%
+  summarise(suma.cantidad = sum(cantidad_casos)) %>%
+  ggplot(aes(x = semanas_epidemiologicas, y = suma.cantidad, col = evento_nombre)) +
+  geom_col(col = "transparent", fill = "yellow", alpha = 0.3) +
+  geom_line() +
+  geom_point() +
+  theme_classic() +
+  theme(legend.position = "bottom")
+  
+```
+
+
 
 ## Machetes:
 [Esta página](https://www.rstudio.com/resources/cheatsheets/) tiene muchos machetes útiles de lo que visto en la clase. Si bien, estos machetes pueden servir al principio, tarde o temprano tendrán que usar google para resolver problemas mas especificos
+

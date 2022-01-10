@@ -21,6 +21,7 @@ NA + 1
 ##### Objetos #####
 #Guardan en memoria RAM a valores, listas, tablas, modelos, etc...
 objeto.1 <- 50
+objeto.1 = 50
 objeto.2 <- 100
 objeto.3 <- objeto.1 + objeto.2
 objeto.3 
@@ -33,11 +34,17 @@ iris
 mtcars
 
 #Listas: sirven para almacenar objetos:
-lista.1 <- list(bienvenido = "soy el primer objeto de esta lista", objeto.1 = objeto.1, objeto.2 = objeto.2, objeto.3 = objeto.3, pi = pi, iris = iris, mtcars = mtcars)
+lista.1 <- list(bienvenido = "soy el primer objeto de esta lista",
+                objeto.1 = objeto.1,
+                objeto.2 = objeto.2,
+                objeto.3 = objeto.3,
+                pi = pi,
+                iris = iris,
+                mtcars = mtcars)
 
 lista.1
 
-lista.1$mtcars
+lista.1$bienvenido
 
 
 ##### Funciones: ######
@@ -50,7 +57,7 @@ ceiling(pi)
 
 floor(pi)
 
-log(objeto.20)
+log(objeto.2)
 
 vector <- c(4, 15, 2, 22, 1000, 0, 0, 6, NA)
 
@@ -60,8 +67,9 @@ mean(vector, na.rm = TRUE)
 
 class(vector)
 
-paste("Asi pego", "muchos textos", "juntos", sep = " ")
+prueba <- paste("Asi pego", "muchos textos", "juntos", sep = "_")
 
+prueba
 
 # Crear funcion propia. Creo una que calcule la raiz cuadrada y despues redondee con n valores despues de la coma:
 
@@ -97,6 +105,8 @@ vector <= 6
 
 vector[vector <= 6]
 
+vector == NA
+
 is.na(vector)
 vector[!is.na(vector)]
 
@@ -126,10 +136,29 @@ objeto.4
 class(objeto.4)
 
 
-as.numeric("hola")
+mal <- as.numeric("hola")
+
+fecha <- as.Date("2020-03-20")
+
+class(fecha)
 
 
+fecha + 1
 
+library(lubridate)
+fecha + years(2)
+year(fecha)
+month(fecha)
+
+format(fecha, "%M/%Y")
+
+as.numeric(fecha)
+
+
+as_datetime("2020-03-20 13:25:35") + 1
+
+
+devtools::install_github("https://github.com/tidyverse/tidyverse")
 ###### Paquetes ######
 #Instalacion de paquetes:
 install.packages("tidyverse")
@@ -146,7 +175,7 @@ library(paquete.no.instalado)
 individuos <- c("juan carlos", "roberta", "esteban", "lara", "beatriz")
 alturas <- c(1.8, 1.65, 1.55, 1.75, 1.9)
 
-tabla.alturas <- data.frame(individuo = individuos,
+tabla.alturas <- data.frame(individuo = individuos, 
                             altura = alturas)
 
 tabla.alturas
@@ -158,6 +187,7 @@ library(readxl) #Esta instalado?
 
 respiratorias <- read_xlsx("Datos/respiratorias.xlsx", 1)
 
+respiratorias
 
 #Lectura desde csv:
 
@@ -197,6 +227,8 @@ respiratorias.cordoba #que dimension tiene esta tabla?
 respiratorias["REGLA LÓGICA QUE CUMPLA QUE LA COLUMNA 'provincia_nombre' DE LA TABLA 'respiratorias' sea igual a 'Jujuy' o 'Salta'",]
 
 
+
+
 # Ejercicio: obtener tabla de individuos cuyo grupo_edad_id sea 7 y que el registro sea del año 2021: Recordar que "Y" se escribe como &
 
 respiratorias[... ,]
@@ -209,7 +241,7 @@ respiratorias[, c("evento_nombre", "grupo_edad_id")] #que tipo de objeto es?
 
 #Ejercicio: Obtener vector de evento_nombre tal que el grupo edad de los individuos sea 9
 
-respiratorias["FILTRADO POR FILAS" , "FILTRADO POR COLUMNAS"]
+length(respiratorias[respiratorias$grupo_edad_id == 9 , "evento_nombre"])
 
 
 ### Creación de nuevas columnas: ###
@@ -232,6 +264,8 @@ library(tidyverse)
 respiratorias %>%
   summary()
 
+summary(respiratorias)
+
 #Filtrado por filas: funcion filter()
 
 respiratorias %>%
@@ -248,10 +282,12 @@ respiratorias %>%
   filter(provincia_nombre == "Córdoba") %>%
   select(evento_nombre, grupo_edad_id)
 
+select(filter(respiratorias, provincia_nombre == "Córdoba"), evento_nombre, grupo_edad_id)
+
 #Crear nuevas variables: funcion mutate()
 
-respiratorias %>%
-  mutate(prov_depto = paste(provincia_nombre, departamento_nombre, sep = "_"))
+respiratorias <- respiratorias %>%
+  mutate(prov_depto2 = paste(provincia_nombre, departamento_nombre, sep = "_"))
 
 #Repetir los ejercicios de arriba pero usando tidyverse:
 respiratorias %>%
@@ -303,30 +339,30 @@ ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nom
 #Ejercicio: Al gráfico anterior hacer que las barras no esten apiladas (stacked), sino una al lado de la otra (dodged) (buscar en google)
 
 ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
-  geom_col(...) +
+  geom_col(position = "dodge") +
   theme_bw()
 
 #Ejercicio: al gráfico anterior, cambiarle los nombres de los ejes X e Y y el nombre del titulo de la leyenda (buscar en gogle):
 
 ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
-  geom_col(...) +
+  geom_col(position = "dodge") +
   theme_bw() +
-  labs(...)
+  labs(x = "Provincias", y = "Porcentajes", fill = "Eventos" )
 
 #Ejercicio: Usar colores daltonico-friendly (buscar en google colores viridis):
 ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
-  geom_col(...) +
+  geom_col(position = "dodge") +
   theme_bw() +
-  labs(...) +
-  scale_...()
+  labs(x = "Provincias", y = "Porcentajes", fill = "Eventos" ) +
+  scale_fill_viridis_d()
 
 #Ejercicio: Ubicar la leyenda arriba del plot (buscar en las referencias de la funcion theme()):
 ggplot(respiratorias.prop, aes(x = provincia_nombre, y = prop, fill = evento_nombre)) +
-  geom_col(...) +
+  geom_col(position = "dodge") +
   theme_bw() +
-  labs(...) +
-  scale_...() +
-  theme(legend....)
+  labs(x = "Provincias", y = "Porcentajes", fill = "Eventos" ) +
+  scale_fill_viridis_d() +
+  theme(legend.position = "top")
 
 
 
@@ -361,13 +397,15 @@ gg.respiratorias <- respiratorias %>%
   scale_fill_viridis_d() +
   theme(legend.position = "top")
 
+gg.respiratorias
+
 #Se le pueden seguir agregando cosas:
 library(scales)
 
 gg.respiratorias <- gg.respiratorias +
   scale_y_continuous(labels = percent, breaks = seq(0, 1, 0.1)) +
   labs(y = "Porcentaje") +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+  theme(axis.text.x = element_text(angle = 45, vjust =1, hjust=1))
 
 #Guardar un ggplot:   
 ggsave(filename = "Figuras/Mi primer ggplot.png", gg.respiratorias)
