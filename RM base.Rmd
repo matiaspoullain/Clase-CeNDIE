@@ -1,11 +1,16 @@
 ---
-title: "Mi primer RMarkdown"
+#title: "Mi primer RMarkdown"
 author: "Matías Poullain"
 date: "9/11/2021"
 output: pdf_document
 always_allow_html: yes
 params:
   data: "prueba"
+---
+
+
+---
+title: `r paste("Anlalisis para la provincia de", params$data)`
 ---
 
 ```{r setup, include=FALSE}

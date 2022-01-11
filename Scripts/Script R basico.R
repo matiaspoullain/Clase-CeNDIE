@@ -255,7 +255,7 @@ View(respiratorias)
 ##### UNIVERSO TIDY ######
 # https://www.tidyverse.org/
 # Casi una filosofia de trabajo en R
-# Conjuno de paquetes muy bien integrados entre sí que facilitan MUCHO las operaciones básicas (y no tan básicas) de R
+# Conjunto de paquetes muy bien integrados entre sí que facilitan MUCHO las operaciones básicas (y no tan básicas) de R
 
 #Primero lo cargamos:
 library(tidyverse)
@@ -412,3 +412,28 @@ ggsave(filename = "Figuras/Mi primer ggplot.png", gg.respiratorias)
 
 #Mas grande:
 ggsave(filename = "Figuras/Mi primer gran ggplot.png", gg.respiratorias, width = 12, height = 6)
+
+
+
+
+
+##### Automatización de procesos con for y while: ####
+
+#Ciclos while:
+#Se repite un proceso hasta que deje de cumplirse una situacion:
+
+x <- 1
+
+while(x < 10){
+  x <- x + 1
+}
+
+
+#Ciclos for:
+#Se repite un proceso para cada valor de un vector
+
+numeros <- c(1, 5, 10, 100, 59)
+
+for(i in numeros){
+  print(i * 100)
+}
