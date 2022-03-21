@@ -1,0 +1,35 @@
+---
+title: "Módulo 2: R base"
+output: html_notebook
+---
+
+Bienvenidos al primer módulo práctico del curso *Introducción al lenguaje de programación R*. A partir de ahora, todos los módulos serán prácticos. Cada módulo viene con un archivo tipo RMarkdown modificable los cuales son archivos de texto con intercalaciones de texto y código y un archivo PDF que no es modificable que se generó a partir del archivo RMarkdown  que funcionará como apunte teórico.
+
+Estas clases están pensadas para ser seguidas desde el archivo RMarkdown dentro de RStudio, por lo que si usted no se encuentra en esta situación, realice un doble click sobre tal archivo y se abrirá el RStudio.
+
+En primer lugar realizaremos una presentación del RMarkdown. Son archivos de texto modificables con partes de texto y otras de código. La parte de texto sirve para explicar lo que se crea necesario sobre la parte de código. Mantener un registro de qué está realizando el código es un paso muy importante ya que leer código sin una explicación previa puede ser muy dificultoso para terceros o bien para uno mismo, tiempo después de haberlo escrito.
+
+Cada código se encuentra en una zona sombreada llamada *Chunk*. Para crear un chunk puede clickear en la *+C* verde que se encuentra en la parte superior del script o bien presionando *Ctrl+Alt+I*. Si presiona *+C* podrá notar que puede elegir varios lenguajes, en esta práctica nos limitaremos a R. Cree un chunk a continuación y dentro de él escriba una operación matemática sencilla. Una vez escrita presione el botón con el símbolo de *Reproducir* verde en la parte superior derecha del chunk para que se realice (corra) la operación. Otra forma de correr el chunk es presionando *Ctrl+Shift+Enter* cuando se encuentre situado sobre él. Para realizar varias operaciones seguidas, separelas con un salto a la línea. Es importante entender que R no realiza operaciones simultáneas sino que son secuenciales: una vez realizada una operación sigue con la de la línea de abajo ya así sucesivamente hasta que encuentre un error o no hayan más líneas.
+
+```{r}
+1+10
+1/5
+```
+Los resultados de la corrida se muestran en dos sitios: en la *consola* y justo por debajo del chunk. Esas salidas son idénticas.
+
+A continuación se presentan algunas operaciones matemáticas básicas que se pueden realizar. Al lado de algunas de ellas verá un "#" seguido de texto. El "#" indica que lo que le sigue es un *comentario*, es decir que R va a ignorar lo que se encuentre después de él en la misma línea. Los comentarios son útiles para realizar pequeñas anotaciones línea a línea.
+
+```{r}
+1 + 5
+5^2 #
+5**2
+10/2
+10/3
+(25+3)/15 ** 0.1
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
