@@ -1,35 +1,208 @@
 ---
 title: "Módulo 2: R base"
-output: html_notebook
+author: "Matías Poullain"
+date: "25/3/2022"
+output: html_document
 ---
 
-Bienvenidos al primer módulo práctico del curso *Introducción al lenguaje de programación R*. A partir de ahora, todos los módulos serán prácticos. Cada módulo viene con un archivo tipo RMarkdown modificable los cuales son archivos de texto con intercalaciones de texto y código y un archivo PDF que no es modificable que se generó a partir del archivo RMarkdown  que funcionará como apunte teórico.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, paged.print=FALSE)
+```
+
+# Introducción
+
+Bienvenidos al primer módulo práctico del curso **Introducción al lenguaje de programación R**. A partir de ahora, todos los módulos serán prácticos. Cada módulo viene con un archivo tipo RMarkdown modificable los cuales son archivos de texto con intercalaciones de texto y código y un archivo PDF que no es modificable que se generó a partir del archivo RMarkdown  que funcionará como apunte teórico.
 
 Estas clases están pensadas para ser seguidas desde el archivo RMarkdown dentro de RStudio, por lo que si usted no se encuentra en esta situación, realice un doble click sobre tal archivo y se abrirá el RStudio.
 
 En primer lugar realizaremos una presentación del RMarkdown. Son archivos de texto modificables con partes de texto y otras de código. La parte de texto sirve para explicar lo que se crea necesario sobre la parte de código. Mantener un registro de qué está realizando el código es un paso muy importante ya que leer código sin una explicación previa puede ser muy dificultoso para terceros o bien para uno mismo, tiempo después de haberlo escrito.
 
-Cada código se encuentra en una zona sombreada llamada *Chunk*. Para crear un chunk puede clickear en la *+C* verde que se encuentra en la parte superior del script o bien presionando *Ctrl+Alt+I*. Si presiona *+C* podrá notar que puede elegir varios lenguajes, en esta práctica nos limitaremos a R. Cree un chunk a continuación y dentro de él escriba una operación matemática sencilla. Una vez escrita presione el botón con el símbolo de *Reproducir* verde en la parte superior derecha del chunk para que se realice (corra) la operación. Otra forma de correr el chunk es presionando *Ctrl+Shift+Enter* cuando se encuentre situado sobre él. Para realizar varias operaciones seguidas, separelas con un salto a la línea. Es importante entender que R no realiza operaciones simultáneas sino que son secuenciales: una vez realizada una operación sigue con la de la línea de abajo ya así sucesivamente hasta que encuentre un error o no hayan más líneas.
+Cada código se encuentra en una zona sombreada llamada **Chunk**. Para crear un chunk puede clickear en la **+C** verde que se encuentra en la parte superior del script o bien presionando **Ctrl+Alt+I**. Si presiona el botón **+C** podrá notar que puede elegir varios lenguajes, en esta práctica nos limitaremos a R. Cree un chunk a continuación y dentro de él escriba una operación matemática sencilla. Una vez escrita presione el botón con el símbolo de **Reproducir** verde en la parte superior derecha del chunk para que se realice (corra) la operación. Otra forma de correr el chunk es presionando **Ctrl+Shift+Enter** cuando se encuentre situado sobre él. Para realizar varias operaciones seguidas, separelas con un salto a la línea. Es importante entender que R no realiza operaciones simultáneas sino que son secuenciales: una vez realizada una operación sigue con la de la línea de abajo ya así sucesivamente hasta que encuentre un error o no hayan más líneas.
 
 ```{r}
 1+10
 1/5
 ```
-Los resultados de la corrida se muestran en dos sitios: en la *consola* y justo por debajo del chunk. Esas salidas son idénticas.
+Los resultados de la corrida se muestran en dos sitios: en la **consola** y justo por debajo del chunk. Esas salidas son idénticas.
 
-A continuación se presentan algunas operaciones matemáticas básicas que se pueden realizar. Al lado de algunas de ellas verá un "#" seguido de texto. El "#" indica que lo que le sigue es un *comentario*, es decir que R va a ignorar lo que se encuentre después de él en la misma línea. Los comentarios son útiles para realizar pequeñas anotaciones línea a línea.
+# Operaciones matemáticas y búsqueda en internet
+
+A continuación se presentan algunas operaciones matemáticas básicas que se pueden realizar. Al lado de algunas de ellas verá un "**#**" seguido de texto. El "**#**" indica que lo que le sigue es un **comentario**, es decir que R va a ignorar lo que se encuentre después de él esa misma línea. Los comentarios son útiles para realizar pequeñas anotaciones línea a línea.
 
 ```{r}
 1 + 5
-5^2 #
-5**2
+5^2 # 5 al cuadrado
+5**2 #Otra forma de escribir 5 al cuadradp
 10/2
 10/3
 (25+3)/15 ** 0.1
+sqrt(25) # Raíz cuadrada (square root en inglés) de 25
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+Observe los resultados con decimales. Qué diferencia clave hay con Excel? En R los decimales se separan con un **punto** y NO con una **coma** (que más adelante veremos para qué se usan).
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+Existen muchas más operaciones matemáticas. Si necesita aplicar alguna que conozca pero que no sabe cómo es su sintaxis en R siempre puede buscarla en Google. Estas búsquedas son moneda corriente en la programación en general. Siendo que los comandos son tantos, tan específicos y tan variados es imposible acordarse de todos, por eso es importante aprender a encontrar lo que se esta buscando en Google (o el buscador de su preferencia).
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+Realice el siguiente ejercicio: Busque y encuentre la forma de implementar un truncamiento de un número. El truncamiento es quedarse solo con la parte entera del número (borrar la parte decimal), es decir que truncar 5.49 devuelve 5. Es muy recomendable agregar a la búsqueda la frase "en R" (o "in R" en inglés) para filtrar mejor los resultados. Cree un nuevo chunk y trunque los números **15.222** y **-2.3**. 
+
+
+*Inserte el chunk aquí*
+
+
+# Comandos especiales y lógica
+
+En R existen ciertos comandos especiales escritos como texto pero que son reconocidos de forma distinta. Los más usuales son **NA**, **NULL**, **TRUE** y **FALSE**. Podrá encontrar la presenciaa de un comando especial en el código por que estos se resaltan automáticamente.
+
+## NA
+
+**NA** significa "valor vacío", es decir que es la representación de un número desconocido y esto hace que tenga propiedades especiales:
+
+```{r}
+NA
+NA + 1
+NA * 5
+
+0
+0 + 1
+0 * 5
+```
+Las operaciones matemáticas que involucren un **NA** devolverán un **NA** a modo de aviso que esa operación no puede ser realizada correctamente. Es muy importante distinguirlo del valor **0** el cuál explicita que el valor es conocido y que ese valor es 0.
+
+El **NA** es especialmente útil en tablas, haciendo explícita la falta de un valor en ese casillero volviendo inconfundible una celda vacía de una celda con puros espacios. En el próximo chunk se muestra un ejemplo. No se detenga demasiado en la sintaxis de creación de una tabla, eso lo veremos más adelante, observe detalladamente el resultado:
+
+
+```{r}
+tabla <- data.frame(ID_persona = c(1, 5, NA, 20, 3),
+                    Estado_cuenta = c("Alta", "Alta", " ", "Baja", NA)
+                    )
+
+tabla
+```
+
+En la línea 3 hay una celda con **NA** y otra con espacios. La diferencia es clara. Si bien la de espacios pareciera estar vacía, contiene caracteres " " por lo que no tiene un NA visible. También observará que la última celda tiene **<NA>** con <>, esto es debido a que la columna Estado_cuenta es de tipo *caracter* y no númerica (cómo si lo es ID_persona), diferenciando entre una celda numérica vacía con una de caracteres vacía.
+
+## NULL
+**NULL** (nulo en inglés), tiene la misma idea que **NA** pero para objetos, por ejemplo una tabla. Por ejemplo, para representar una tabla que no existe, se usa **NULL**, para representar un número que no está se usa **NA**.
+
+## Operadores lógicos TRUE y FALSE
+
+Una de las herramientas más importantes en R es la posibilidad de realizar operaciones lógicas y para ellas se usan los comandos especiales **TRUE** y **FALSE** (VERDADERO y FALSO respectivamente en inglés). Estos pueden ser combinados de distintas formas con los operadores **&** y **|** que se refieren a "y" y "o". Algunas operaciones lógicas básicas se muestran a continuación:
+
+```{r}
+TRUE
+FALSE
+TRUE & TRUE #Verdadero y verdadero
+TRUE & FALSE #Verdadeto y falso
+FALSE | TRUE #Falso o verdadero
+FALSE | FALSE #Falso o Falso
+```
+
+Además, se pueden hacer realizar operaciones relacionales con números o textos que devuelvan resultados lógicos:
+
+```{r}
+3 < 1 #mas chico que...
+4 >= 10 #mas grande o igual que...
+5 <= -1 #mas chico o igual que
+3 == 3 #igual a...
+3 != 3 #diferente a...
+
+"texto" == "TEXTO"
+"texto" > "letras"
+```
+
+Al utilizar estos operadores siempre se espera que el resultado sea **TRUE** o **FALSE**. Algo que suele llamar la atención con estos operadores es el **==** que realiza una prueba de igualidad. Intuitivamente, uno quisiera utilizar el comando **=**, sin embargo este tiene otro propósito crucial que se verá más adelante, por lo que se creó el comando **==** para que no hayan ambigüedades.
+
+El comando **!=** equivale a un singo de inequidad (igual tachado), pero como en el teclado no está ese símbolo se usa el **!=**.
+
+Observe lo que ocurrió con **"texto" == "TEXTO"**, entregó el resultado **FALSE**. Si bien son la misma palabra, los caracteres no lo son, ya que uno está en minúsculas y el otro en mayúsculas, por lo que R detecta que son distintos. No importa la cantidad de diferencias, con que haya una sola, esos dos textos son distintos. Ocurre lo mismo con las tildes.
+
+En el caso de **"texto" > "letras"** se devolvió **TRUE**. Cuando ocurren < o > entre caractéres, R estudia su orden alfabético. Como "texto" viene después que "letras" alfabéticamente, "texto" > "letras" es verdadero.
+
+# Clases de datos
+
+Los datos suelen ser de 4 clases básicas: 
+* **numeric** (numérico): Número en su sentido más amplio. Este tipo agrupa todos los números enteros, decimales, racionales, negativos e infinitos
+* **integer** (enteros): Cómo **numeric** pero solo avocado a enteros
+* **logical** (lógicos): TRUE o FALSE
+* **character** (caracteres): Texto. Se lo explicita escribiendo el texto entre **"** o **'**. R reconoce el texto como una secuencia de caracteres ordenados. No tiene restricciones en cuanto al o que se puede escribir.
+* **factor**: Similar a **character** pero con niveles definidos: la luz de un semaforo puede ser roja, amarilla o verde, no hay otras opciones.
+
+Usualmente, cómo se devuelve un resultado deja implicito la clase de dato. Sin embargo se puede utilizar la función **class()** para saberlo con certeza. Esta función devuelve la clase del dato entre paréntesis.
+
+```{r}
+10
+10L #La L explicita que se trata de un integer y no de un numeric
+TRUE
+"texto"
+as.factor("texto")
+
+class(10)
+class(10L)
+class(TRUE)
+class("texto")
+class(as.factor("texto"))
+```
+
+
+
+# Objetos
+
+Una facilidad clave que tiene R es el manejo de objetos. Para crearlos se utilizan los operadores **<-** (como una flecha) o **=** que funcionan indistintamente aunque, por convención y a modo de diferenciación con otros lenguajes, la flecha es la más utilizada. Asignar un objeto es similara asignarle un nombre a algo a modo de poder utilizarlo facilmente. Observe el código siguiente e intente entender que está ocurriendo:
+
+```{r}
+objeto.1 <- 50
+
+objeto.1
+
+objeto.1 + 50
+
+objeto.2 <- objeto.1 * 3
+objeto.2
+
+objeto.1 < objeto.2
+```
+
+Al nombre **objeto.1** (aunque podría ser cualquier otro nombre que no contenga comandos especiales) se le asignó el número 50 por lo que, a partir de ese momento, llamar a **objeto.1** es equivalente a usar el número 50 y se le pueden realizar operaciones matemáticas y lógicas sobre él como ya se vio anteriormente. Además, se pueden usar para crear nuevos objetos, en este caso se creó **objeto.2** a partir de **objeto.1**.
+
+Puede cambiar el valor de un objeto reasignándole otro valor:
+
+```{r}
+objeto.1 <- 2
+objeto.1
+```
+
+Ahora bien, **objeto.1** es 2. ¿Qué ocurrió con **objeto.2**? Este fue definido a partir de **objeto.1** cuando este era 50, entonces ¿mantuvo el valor de 150 o se convirtió automáticamente en 6? Puede checkearlo escribiendo su nombre en la consola (abajo) para hacer un checkeo rápido sin necesidad de crear un chunk.
+
+**objeto.2** devuelve 150. Esto demuestra que **objeto.2** (una vez creado) es independiente a los cambios que le ocurran a **objeto.1**
+
+Otra forma de checkear rápidamente los valores de un objeto es mirando la subventada de Ambiente (Environment, arriba a la derecha). Aunque para objetos más grandes (tablas por ejemplo), no se los ve directamente. 
+
+Los objetos más comúnes que se pueden crear son los vectores, las tablas y las listas:
+
+## Vectores
+
+Los vectores no son más que secuencias ordenadas de datos de una misma clase. No puede contener datos de distinta clase. Los vectores se crean con la función **c()** (que hace referencia a la palabra "concatenar") y cada elemento está separado por comas:
+
+```{r}
+numeros_impares <- c(1, 3, 5, 7, 9, 11)
+numeros_impares
+class(numeros_impares)
+```
+
+Aquí queda en evidencia el uso de las comas, sirven para separar elementos y NO para delimitar decimales.
+
+De forma similar a lo visto anteriormente, se pueden realizar distintos tipos de operaciones sobre los vectores. Las operaciones son las mismas que para un valor único pero repetidos para toda la secuencia.
+
+Cree un nuevo chunk y multiplique todos los números del vector **numeros_impares** por 5 y haga el la prueba de cuales de esos son más chicos que 10.
+Además, obtenga el número maximo y luego el mínimo del vector **numeros_impares** (puede realizar una búsqueda en internet para aprender cómo se hace).
+
+*Inserte chunk aquí* 
+
+```{r}
+numeros_impares*5 < 10
+max(numeros_impares)
+min(numeros_impares)
+```
+
+
+
