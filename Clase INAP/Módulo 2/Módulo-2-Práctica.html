@@ -374,12 +374,13 @@ pre code {
 <p>Bienvenidos al primer módulo práctico del curso <strong>Introducción
 al lenguaje de programación R</strong>. A partir de ahora, todos los
 módulos serán prácticos. Cada módulo viene con un archivo tipo RMarkdown
-modificable los cuales son archivos de texto con intercalaciones de
-texto y código y un archivo PDF que no es modificable que se generó a
-partir del archivo RMarkdown que funcionará como apunte teórico.</p>
+(.Rmd) modificable. Estos son archivos de texto con intercalaciones de
+texto y código que deberán modificar a lo largo de la práctica. Además,
+hay un archivo PDF que no es modificable que se generó a partir del
+archivo RMarkdown original que funciona como apunte teórico.</p>
 <p>Estas clases están pensadas para ser seguidas desde el archivo
 RMarkdown dentro de RStudio, por lo que si usted no se encuentra en esta
-situación, realice un doble click sobre tal archivo y se abrirá el
+situación, realice un doble click sobre tal archivo y se abrirá en
 RStudio.</p>
 <p>En primer lugar realizaremos una presentación del RMarkdown. Son
 archivos de texto modificables con partes de texto y otras de código. La
@@ -389,38 +390,34 @@ es un paso muy importante ya que leer código sin una explicación previa
 puede ser muy dificultoso para terceros o bien para uno mismo, tiempo
 después de haberlo escrito.</p>
 <p>Cada código se encuentra en una zona sombreada llamada
-<strong>Chunk</strong>. Para crear un chunk puede clickear en la
-<strong>+C</strong> verde que se encuentra en la parte superior del
-script o bien presionando <strong>Ctrl+Alt+I</strong>. Si presiona
-<strong>+C</strong> podrá notar que puede elegir varios lenguajes, en
-esta práctica nos limitaremos a R. Cree un chunk a continuación y dentro
-de él escriba una operación matemática sencilla. Una vez escrita
-presione el botón con el símbolo de <strong>Reproducir</strong> verde en
-la parte superior derecha del chunk para que se realice (corra) la
-operación. Otra forma de correr el chunk es presionando
-<strong>Ctrl+Shift+Enter</strong> cuando se encuentre situado sobre él.
-Para realizar varias operaciones seguidas, separelas con un salto a la
-línea. Es importante entender que R no realiza operaciones simultáneas
-sino que son secuenciales: una vez realizada una operación sigue con la
-de la línea de abajo ya así sucesivamente hasta que encuentre un error o
-no hayan más líneas.</p>
-<pre class="r"><code>1+10</code></pre>
-<pre><code>## [1] 11</code></pre>
-<pre class="r"><code>1/5</code></pre>
-<pre><code>## [1] 0.2</code></pre>
+<strong>chunck</strong>. Para crear un chunck puede clickear en la
+<strong>+C</strong> verde que se encuentra en la parte superior derecha
+de la sub-ventana del script o bien presionando
+<strong>Ctrl+Alt+I</strong>. Si presiona el botón <strong>+C</strong>
+podrá notar que puede elegir varios lenguajes, en esta práctica nos
+limitaremos a R. Cree un chunck a continuación y dentro de él escriba
+una operación matemática sencilla. Una vez escrita presione el botón con
+el símbolo de <strong>Reproducir</strong> verde en la parte superior
+derecha del chunck para que se realice (corra) la operación. Otra forma
+de correr el chunck es presionando <strong>Ctrl+Shift+Enter</strong>
+cuando se encuentre situado sobre él. Para realizar varias operaciones
+seguidas, sepárelas con un salto a la línea. Es importante entender que
+R no realiza operaciones simultáneas sino que son secuenciales: una vez
+realizada una operación sigue con la de la línea de abajo ya así
+sucesivamente hasta que encuentre un error o no hayan más líneas.</p>
+<p><em>Inserte el chunck aquí</em></p>
 <p>Los resultados de la corrida se muestran en dos sitios: en la
-<strong>consola</strong> y justo por debajo del chunk. Esas salidas son
+<strong>consola</strong> y justo por debajo del chunck. Esas salidas son
 idénticas.</p>
 </div>
 <div id="operaciones-matemáticas-y-búsqueda-en-internet" class="section level1">
 <h1>Operaciones matemáticas y búsqueda en internet</h1>
 <p>A continuación se presentan algunas operaciones matemáticas básicas
 que se pueden realizar. Al lado de algunas de ellas verá un
-“<strong>#</strong>” seguido de texto. El “<strong>#</strong>” indica
-que lo que le sigue es un <strong>comentario</strong>, es decir que R va
-a ignorar lo que se encuentre después de él esa misma línea. Los
-comentarios son útiles para realizar pequeñas anotaciones línea a
-línea.</p>
+<code>#</code> seguido de texto. El <code>#</code> indica que lo que le
+sigue es un <strong>comentario</strong>, es decir que R va a ignorar lo
+que se encuentre después de él en esa misma línea. Los comentarios son
+útiles para realizar pequeñas anotaciones línea a línea.</p>
 <pre class="r"><code>1 + 5</code></pre>
 <pre><code>## [1] 6</code></pre>
 <pre class="r"><code>5^2 # 5 al cuadrado</code></pre>
@@ -435,36 +432,40 @@ línea.</p>
 <pre><code>## [1] 21.35743</code></pre>
 <pre class="r"><code>sqrt(25) # Raíz cuadrada (square root en inglés) de 25</code></pre>
 <pre><code>## [1] 5</code></pre>
-<p>Observe los resultados con decimales. Qué diferencia clave hay con
-Excel? En R los decimales se separan con un <strong>punto</strong> y NO
-con una <strong>coma</strong> (que más adelante veremos para qué se
-usan).</p>
+<p>Observe los resultados con decimales. Acá se presenta una de las
+diferencias claves con Excel, en R los decimales se separan con un
+<strong>punto</strong> y NO con una <strong>coma</strong> (que más
+adelante veremos para qué se usan).</p>
 <p>Existen muchas más operaciones matemáticas. Si necesita aplicar
 alguna que conozca pero que no sabe cómo es su sintaxis en R siempre
-puede buscarla en Google. Estas búsquedas son moneda corriente en la
+puede buscarla en Internet. Estas búsquedas son moneda corriente en la
 programación en general. Siendo que los comandos son tantos, tan
 específicos y tan variados es imposible acordarse de todos, por eso es
-importante aprender a encontrar lo que se esta buscando en Google (o el
-buscador de su preferencia).</p>
+importante aprender a encontrar lo que se esta buscando en Internet.</p>
 <p>Realice el siguiente ejercicio: Busque y encuentre la forma de
 implementar un truncamiento de un número. El truncamiento es quedarse
 solo con la parte entera del número (borrar la parte decimal), es decir
 que truncar 5.49 devuelve 5. Es muy recomendable agregar a la búsqueda
 la frase “en R” (o “in R” en inglés) para filtrar mejor los resultados.
-Cree un nuevo chunk y trunque los números <strong>15.222</strong> y
+Cree un nuevo chunck y trunque los números <strong>15.222</strong> y
 <strong>-2.3</strong>.</p>
-<p><em>Inserte el chunk aquí</em></p>
+<p><em>Inserte el chunck aquí</em></p>
+<p>Generalmente, los lenguajes de programación están desarrollados y
+mantenidos en el idioma inglés. Por esta razón suele ser conveniente
+realizar las búsquedas en ese idioma. Sin embargo, hay una gran
+comunidad de usuarios de R hispanohablantes y una gran cantidad de
+respuestas se encuentran en español.</p>
 </div>
 <div id="comandos-especiales-y-lógica" class="section level1">
 <h1>Comandos especiales y lógica</h1>
 <p>En R existen ciertos comandos especiales escritos como texto pero que
-son reconocidos de forma distinta. Los más usuales son
-<strong>NA</strong>, <strong>NULL</strong>, <strong>TRUE</strong> y
-<strong>FALSE</strong>. Podrá encontrar la presenciaa de un comando
-especial en el código por que estos se resaltan automáticamente.</p>
+son reconocidos de forma distinta. Los más usuales son <code>NA</code>,
+<code>NULL</code>, <code>TRUE</code> y <code>FALSE</code>. Los comandos
+especiales son resaltados automáticamente en el código para que sean
+identificables más fácilmente.</p>
 <div id="na" class="section level2">
 <h2>NA</h2>
-<p><strong>NA</strong> significa “valor vacío”, es decir que es la
+<p><code>NA</code> significa “valor vacío”, es decir que es la
 representación de un número desconocido y esto hace que tenga
 propiedades especiales:</p>
 <pre class="r"><code>NA</code></pre>
@@ -479,14 +480,14 @@ propiedades especiales:</p>
 <pre><code>## [1] 1</code></pre>
 <pre class="r"><code>0 * 5</code></pre>
 <pre><code>## [1] 0</code></pre>
-<p>Las operaciones matemáticas que involucren un <strong>NA</strong>
-devolverán un <strong>NA</strong> a modo de aviso que esa operación no
-puede ser realizada correctamente. Es muy importante distinguirlo del
-valor <strong>0</strong> el cuál explicita que el valor es conocido y
-que ese valor es 0.</p>
-<p>El <strong>NA</strong> es especialmente útil en tablas, haciendo
+<p>Las operaciones matemáticas que involucren un <code>NA</code>
+devolverán un <code>NA</code> a modo de aviso que esa operación no puede
+ser realizada correctamente. Es muy importante distinguirlo del valor
+<code>0</code> el cuál explicita que el valor es conocido y que ese
+valor es 0.</p>
+<p>El <code>NA</code> es especialmente útil en tablas, haciendo
 explícita la falta de un valor en ese casillero volviendo inconfundible
-una celda vacía con una celda con puros espacios. En el próximo chunk se
+una celda vacía de una celda con puros espacios. En el próximo chunck se
 muestra un ejemplo. No se detenga demasiado en la sintaxis de creación
 de una tabla, eso lo veremos más adelante, observe detalladamente el
 resultado:</p>
@@ -501,14 +502,304 @@ tabla</code></pre>
 ## 3         NA              
 ## 4         20          Baja
 ## 5          3          &lt;NA&gt;</code></pre>
+<p>En la línea 3 hay una celda con <code>NA</code> y otra con espacios.
+La diferencia es clara. Si bien la de espacios pareciera estar vacía,
+contiene caracteres ” ” por lo que no tiene un NA visible. También
+observará que la última celda tiene <code>&lt;NA&gt;</code> con
+&lt;&gt;, esto es debido a que la columna Estado_cuenta es de tipo
+<em>caracter</em> y no numérica (cómo si lo es ID_persona),
+diferenciando entre una celda numérica vacía con una de caracteres
+vacía.</p>
 </div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="data:image/png;base64,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" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the
-code chunk to prevent printing of the R code that generated the
-plot.</p>
+<div id="null" class="section level2">
+<h2>NULL</h2>
+<p><code>NULL</code> (nulo en inglés), tiene la misma idea que
+<code>NA</code> pero para objetos como una tabla. Por ejemplo, para
+representar una tabla que no existe, se usa <code>NULL</code>, para
+representar un número que no está se usa <code>NA</code>.</p>
+</div>
+<div id="operadores-lógicos-true-y-false" class="section level2">
+<h2>Operadores lógicos TRUE y FALSE</h2>
+<p>Una de las herramientas más importantes en R es la posibilidad de
+realizar operaciones lógicas y para ellas se usan los comandos
+especiales <code>TRUE</code> y <code>FALSE</code> (VERDADERO y FALSO
+respectivamente en inglés). Estos pueden ser combinados de distintas
+formas con los operadores <code>&amp;</code> y <code>|</code> que se
+refieren a “y” y “o” respectivamente. Algunas operaciones lógicas
+básicas se muestran a continuación:</p>
+<pre class="r"><code>TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>FALSE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>TRUE &amp; TRUE #Verdadero y verdadero</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>TRUE &amp; FALSE #Verdadero y falso</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>FALSE | TRUE #Falso o verdadero</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>FALSE | FALSE #Falso o Falso</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<p>Además, se pueden hacer realizar operaciones relacionales con números
+o textos que devuelvan resultados lógicos:</p>
+<pre class="r"><code>3 &lt; 1 #mas chico que...</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>4 &gt;= 10 #mas grande o igual que...</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>5 &lt;= -1 #mas chico o igual que</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>3 == 3 #igual a...</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>3 != 3 #diferente a...</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>&quot;texto&quot; == &quot;TEXTO&quot;</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>&quot;texto&quot; &gt; &quot;letras&quot;</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Al utilizar estos operadores siempre se espera que el resultado sea
+<code>TRUE</code> o <code>FALSE</code>. Algo que suele llamar la
+atención con estos operadores es el <code>==</code> que realiza una
+prueba de igualdad. Intuitivamente, uno quisiera utilizar el comando
+<code>=</code>, sin embargo este tiene otro propósito crucial que se
+verá más adelante, por lo que se creó el comando <code>==</code> para
+que no hayan ambigüedades.</p>
+<p>El comando <code>!=</code> equivale a un singo de inequidad
+(representa el igual tachado), pero como en el teclado no está ese
+símbolo se usa el <code>!=</code>.</p>
+<p>Observe lo que ocurrió con <code>&quot;texto&quot; == &quot;TEXTO&quot;</code>, entregó
+el resultado <code>FALSE</code>. Si bien son la misma palabra, los
+caracteres no lo son, ya que uno está en minúsculas y el otro en
+mayúsculas, por lo que R detecta que son distintos. No importa la
+cantidad de diferencias, con que haya una sola, esos dos textos son
+distintos. Ocurre lo mismo con las tildes.</p>
+<p>En el caso de <code>&quot;texto&quot; &gt; &quot;letras&quot;</code> se devolvió
+<code>TRUE</code>. Cuando ocurren &lt; o &gt; entre caracteres, R
+estudia su orden alfabético. Como “texto” viene después que “letras”
+alfabéticamente, “texto” &gt; “letras” es verdadero.</p>
+</div>
+</div>
+<div id="clases-de-datos" class="section level1">
+<h1>Clases de datos</h1>
+<p>Los datos suelen ser de 5 clases básicas:</p>
+<ul>
+<li><strong>numeric</strong> (numérico): Número en su sentido más
+amplio. Este tipo agrupa todos los números enteros, decimales,
+racionales, negativos e infinitos</li>
+<li><strong>integer</strong> (enteros): Cómo <strong>numeric</strong>
+pero solo avocado a enteros</li>
+<li><strong>logical</strong> (lógicos): TRUE o FALSE</li>
+<li><strong>character</strong> (caracteres): Texto. Se lo explicita
+escribiendo el texto entre <code>&quot;</code> o <code>&#39;</code>. R reconoce
+el texto como una secuencia de caracteres ordenados. No tiene
+restricciones en cuanto a lo que se puede escribir.</li>
+<li><strong>factor</strong>: Similar a <strong>character</strong> pero
+con niveles definidos: la luz de un semáforo puede ser roja, amarilla o
+verde, no hay otras opciones.</li>
+</ul>
+<p>Usualmente, cómo se devuelve un resultado deja implicito la clase de
+dato. Sin embargo se puede utilizar la función <code>class()</code> para
+saberlo con certeza. Esta función devuelve la clase del dato entre
+paréntesis.</p>
+<pre class="r"><code>10</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="r"><code>10L #La L explicita que se trata de un integer y no de un numeric</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="r"><code>TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>&quot;texto&quot;</code></pre>
+<pre><code>## [1] &quot;texto&quot;</code></pre>
+<pre class="r"><code>as.factor(&quot;texto&quot;)</code></pre>
+<pre><code>## [1] texto
+## Levels: texto</code></pre>
+<pre class="r"><code>class(10)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>class(10L)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="r"><code>class(TRUE)</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code>class(&quot;texto&quot;)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>class(as.factor(&quot;texto&quot;))</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+</div>
+<div id="objetos" class="section level1">
+<h1>Objetos</h1>
+<p>Una facilidad clave que tiene R es el manejo de objetos. Para
+crearlos se utilizan los operadores <code>&lt;-</code> (como una flecha)
+o <code>=</code> que funcionan indistintamente aunque, por convención y
+a modo de diferenciación con otros lenguajes, la flecha es la más
+utilizada. Asignar un objeto es similar a asignarle un nombre a algo a
+modo de poder utilizarlo fácilmente. Observe el código siguiente e
+intente entender que está ocurriendo:</p>
+<pre class="r"><code>objeto.1 &lt;- 50
+objeto.1</code></pre>
+<pre><code>## [1] 50</code></pre>
+<pre class="r"><code>objeto.1 + 50</code></pre>
+<pre><code>## [1] 100</code></pre>
+<pre class="r"><code>objeto.2 &lt;- objeto.1 * 3
+objeto.2</code></pre>
+<pre><code>## [1] 150</code></pre>
+<pre class="r"><code>objeto.1 &lt; objeto.2</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Al nombre <code>objeto.1</code> (aunque podría ser cualquier otro
+nombre que no contenga comandos especiales) se le asignó el número 50
+por lo que, a partir de ese momento, llamar a <code>objeto.1</code> es
+equivalente a usar el número 50 y se le pueden realizar operaciones
+matemáticas y lógicas sobre él como ya se vio anteriormente. Además, se
+pueden usar para crear nuevos objetos, en este caso se creó
+<code>objeto.2</code> a partir de <code>objeto.1</code>.</p>
+<p>Puede cambiar el valor de un objeto reasignándole otro valor:</p>
+<pre class="r"><code>objeto.1 &lt;- 2
+objeto.1</code></pre>
+<pre><code>## [1] 2</code></pre>
+<p>Ahora bien, <code>objeto.1</code> es 2. Pero ¿Qué ocurrió con
+<code>objeto.2</code>? Este fue definido a partir de
+<code>objeto.1</code> cuando este era 50, entonces ¿mantuvo el valor de
+150 o se convirtió automáticamente en 6? Puede checkearlo escribiendo su
+nombre en la consola (subventana de abajo) para hacer un checkeo rápido
+sin necesidad de crear un chunck.</p>
+<p><code>objeto.2</code> devuelve 150. Esto demuestra que
+<code>objeto.2</code> (una vez creado) es independiente a los cambios
+que le ocurran a <code>objeto.1</code></p>
+<p>Otra forma de checkear rápidamente los valores de un objeto es
+mirando la subventana de Ambiente (Environment, arriba a la derecha).
+Aunque para objetos más grandes (tablas por ejemplo), no se los ve
+directamente.</p>
+<p>Los objetos más comunes que se pueden crear son los vectores y las
+tablas:</p>
+<div id="vectores" class="section level2">
+<h2>Vectores</h2>
+<p>Los vectores no son más que secuencias ordenadas de datos de una
+misma clase. No puede contener datos de distinta clase. Los vectores se
+crean con la función <code>c()</code> (que hace referencia a la palabra
+“concatenar”) y cada elemento está separado por comas:</p>
+<pre class="r"><code>numeros_impares &lt;- c(1, 3, 5, 7, 9, 11)
+numeros_impares</code></pre>
+<pre><code>## [1]  1  3  5  7  9 11</code></pre>
+<pre class="r"><code>class(numeros_impares) #Tipo de datos del vector</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>numeros_impares[4] #Valor del elemento en la posición 4 del vector</code></pre>
+<pre><code>## [1] 7</code></pre>
+<p>Aquí queda en evidencia el uso de las comas, sirven para separar
+elementos y NO para delimitar decimales.</p>
+<p>Los corchetes <code>[]</code> que preceden al vector permiten acceder
+a un elemento específico del vector. Por ejemplo
+<code>numeros_impares[4]</code> devuelve el cuarto elemento del vector,
+que es 7.</p>
+<p>De forma similar a lo visto anteriormente, se pueden realizar
+distintos tipos de operaciones sobre los vectores. Las operaciones son
+las mismas que para un valor único pero repetidos para toda la
+secuencia.</p>
+<p>Cree un nuevo chunck y multiplique todos los números del vector
+<code>numeros_impares</code> por 5 y haga la prueba de cuales de esos
+son más chicos que 10. Luego, obtenga el número máximo y luego el mínimo
+del vector <code>numeros_impares</code> (puede realizar una búsqueda en
+Internet para aprender cómo se hace).</p>
+<p><em>Inserte chunck aquí</em></p>
+<pre class="r"><code>numeros_impares*5 &lt; 10</code></pre>
+<pre><code>## [1]  TRUE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>max(numeros_impares)</code></pre>
+<pre><code>## [1] 11</code></pre>
+<pre class="r"><code>min(numeros_impares)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>¿Qué ocurre si el vector contiene un <code>NA</code>? Cree un nuevo
+chunck copiando y pegando el contenido de los dos últimos y modifique la
+creación de <code>numeros_impares</code> de forma tal que contenga un
+<code>NA</code>, no importa en cuál posición. Observe los
+resultados.</p>
+<p><em>Inserte chunck aquí</em></p>
+<pre class="r"><code>numeros_impares &lt;- c(1, 3, 5, NA, 9, 11)
+numeros_impares</code></pre>
+<pre><code>## [1]  1  3  5 NA  9 11</code></pre>
+<pre class="r"><code>class(numeros_impares)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>numeros_impares*5 &lt; 10</code></pre>
+<pre><code>## [1]  TRUE FALSE FALSE    NA FALSE FALSE</code></pre>
+<pre class="r"><code>max(numeros_impares)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>min(numeros_impares)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>Es muy común que aplicar funciones a vectores con <code>NA</code>
+devuelva <code>NA</code>. Si bien es útil que R haga explícito que
+dentro de ese vector hay un <code>NA</code> y no pudiendo realizar los
+cálculos correctamente, se puede forzar a que el cálculo se realice de
+todas formas agregando <code>, na.rm = TRUE</code> dentro de la función.
+<code>na.rm</code> es una abreviación de <strong>NA remove</strong>
+(Remover NAs) que hace que los <code>NA</code> sean ignorados:</p>
+<pre class="r"><code>max(numeros_impares, na.rm = TRUE)</code></pre>
+<pre><code>## [1] 11</code></pre>
+<pre class="r"><code>min(numeros_impares, na.rm = TRUE)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>Para estas funciones en particular, <code>na.rm</code> es un
+parámetro de la función. La gran mayoría de las funciones tienen varios
+parámetros y todos ellos deben tener algún valor aunque, a veces, este
+valor esté explícito y no es necesario explicitarlo. En el último
+ejemplo, la función <code>max()</code> tiene cómo parámetros a un vector
+y a <code>na.rm</code> y en el último chunck el valor del vector fue
+<code>numeros_impares</code> y el valor de <code>na.rm</code> fue
+<code>TRUE</code>. Sin embargo, antes pudimos correr
+<code>max(numeros_impares)</code> sin especificar <code>na.rm</code>,
+esto es porque <code>na.rm == FALSE</code> por default a menos que se
+especifique otra cosa. Cómo ver cuales parámetros están implícitos o no
+en una función será visto más adelante en el módulo 3.</p>
+</div>
+<div id="data-frames" class="section level2">
+<h2>Data Frames</h2>
+<p>Es el nombre que se les da a las tablas en R y serán los objetos
+centrales del trabajo en esta plataforma. Tiene columnas y filas y las
+columnas deben tener un tipo de dato, tal como en Excel. Existen muchas
+formas de crear un <strong>Data frame</strong> en R, una de las más
+sencillas es la siguiente:</p>
+<ul>
+<li>Paso 1: Crear tantos vectores como columnas se quieran. Todos deben
+tener el mismo largo. Los nombres que se les da a los vectores serán los
+nombres de las columnas.</li>
+<li>Paso 2: Juntarlos con la función <code>data.frame()</code> y
+asignarle un nombre para guardarlo.</li>
+</ul>
+<pre class="r"><code>#Paso 1:
+
+Nombre &lt;- c(&quot;Martín&quot;, &quot;Alejandra&quot;, &quot;María&quot;, &quot;Tomás&quot;, &quot;Lucía&quot;)
+Calle &lt;- c(&quot;Av. Directorio&quot;, &quot;Juan de Garay&quot;, &quot;Pueyrredón&quot;, &quot;Perú&quot;, &quot;25 de Mayo&quot;)
+Altura &lt;- c(1805, 1012, 945, 341, 1240)
+Localidad &lt;- c(&quot;Capital Federal&quot;, &quot;Ciudad de Córdoba&quot;, &quot;Villa Mercedes&quot;, &quot;San Rafael&quot;, &quot;Trelew&quot;)
+Provincia &lt;- c(&quot;Capital Federal&quot;,&quot;Córdoba&quot;, &quot;San Luis&quot;, &quot;Mendoza&quot;, &quot;Chubut&quot;)
+
+#Paso 2:
+
+tabla.domicilios &lt;- data.frame(Nombre, Calle, Altura, Localidad, Provincia)
+tabla.domicilios #Esta es sólo para observar al tabla</code></pre>
+<pre><code>##      Nombre          Calle Altura         Localidad       Provincia
+## 1    Martín Av. Directorio   1805   Capital Federal Capital Federal
+## 2 Alejandra  Juan de Garay   1012 Ciudad de Córdoba         Córdoba
+## 3     María     Pueyrredón    945    Villa Mercedes        San Luis
+## 4     Tomás           Perú    341        San Rafael         Mendoza
+## 5     Lucía     25 de Mayo   1240            Trelew          Chubut</code></pre>
+<p>Cuando la tabla es muy grande, puede ser difícil observarla, por lo
+que se puede realizar <code>View(tabla.domicilios)</code> para que se
+abra una pestaña nueva con la visualización.</p>
+<p>Para acceder a un elemento de la tabla, tal como ocurría con el
+vector se usan los corchetes <code>[]</code>. A diferencia del vector,
+la tabla tiene filas y columnas, por lo que dentro del corchete hay que
+escribir el número de fila y el de columna del elemento al que se quiera
+acceder. Por ejemplo, el elemento “María” se encuentra en la fila 3 y
+columna 1 de la tabla <code>tabla.domicilios</code>. También, se puede
+acceder a la columna a partir de su nombre. Estos ejemplos están
+reflejados en el siguiente chunck:</p>
+<pre class="r"><code>tabla.domicilios[3, 1]</code></pre>
+<pre><code>## [1] &quot;María&quot;</code></pre>
+<pre class="r"><code>tabla.domicilios[3, &quot;Nombre&quot;]</code></pre>
+<pre><code>## [1] &quot;María&quot;</code></pre>
+<p>Otro operador importante de las tablas es <code>$</code>. Permite
+acceder a columnas enteras por su nombre devolviendo el vector
+original:</p>
+<pre class="r"><code>tabla.domicilios$Nombre</code></pre>
+<pre><code>## [1] &quot;Martín&quot;    &quot;Alejandra&quot; &quot;María&quot;     &quot;Tomás&quot;     &quot;Lucía&quot;</code></pre>
+<p>Siendo que los data frames son los principales elementos de trabajo
+en R, tienen una muy gran cantidad de operadores y funciones para su
+manipulación. En los próximos módulos, trabajaremos casi exclusivamente
+con data frames, veremos algunas de sus operaciones posibles y
+entenderemos más a fondo la lógica del trabajo con bases de datos en
+R.</p>
 </div>
 </div>
 
