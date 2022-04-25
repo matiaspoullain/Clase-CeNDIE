@@ -21,7 +21,11 @@ En primer lugar realizaremos una presentación del RMarkdown. Son archivos de te
 
 Cada código se encuentra en una zona sombreada llamada **chunck**. Para crear un chunck puede clickear en la **+C** verde que se encuentra en la parte superior derecha de la sub-ventana del script o bien presionando **Ctrl+Alt+I**. Si presiona el botón **+C** podrá notar que puede elegir varios lenguajes, en esta práctica nos limitaremos a R. Cree un chunck a continuación y dentro de él escriba una operación matemática sencilla. Una vez escrita presione el botón con el símbolo de **Reproducir** verde en la parte superior derecha del chunck para que se realice (corra) la operación. Otra forma de correr el chunck es presionando **Ctrl+Shift+Enter** cuando se encuentre situado sobre él. Para realizar varias operaciones seguidas, sepárelas con un salto a la línea. Es importante entender que R no realiza operaciones simultáneas sino que son secuenciales: una vez realizada una operación sigue con la de la línea de abajo ya así sucesivamente hasta que encuentre un error o no hayan más líneas.
 
-*Inserte el chunck aquí*
+```{r}
+
+```
+
+
 
 Los resultados de la corrida se muestran en dos sitios: en la **consola** y justo por debajo del chunck. Esas salidas son idénticas.
 
@@ -32,7 +36,7 @@ A continuación se presentan algunas operaciones matemáticas básicas que se pu
 ```{r}
 1 + 5
 5^2 # 5 al cuadrado
-5**2 #Otra forma de escribir 5 al cuadradp
+5**2 #Otra forma de escribir 5 al cuadrado
 10/2
 10/3
 (25+3)/15 ** 0.1
@@ -45,8 +49,12 @@ Existen muchas más operaciones matemáticas. Si necesita aplicar alguna que con
 
 Realice el siguiente ejercicio: Busque y encuentre la forma de implementar un truncamiento de un número. El truncamiento es quedarse solo con la parte entera del número (borrar la parte decimal), es decir que truncar 5.49 devuelve 5. Es muy recomendable agregar a la búsqueda la frase "en R" (o "in R" en inglés) para filtrar mejor los resultados. Cree un nuevo chunck y trunque los números **15.222** y **-2.3**. 
 
+```{r}
+trunc(15.222)
+trunc(-2.3)
+```
 
-*Inserte el chunck aquí*
+
 
 Generalmente, los lenguajes de programación están desarrollados y mantenidos en el idioma inglés. Por esta razón suele ser conveniente realizar las búsquedas en ese idioma. Sin embargo, hay una gran comunidad de usuarios de R hispanohablantes y una gran cantidad de respuestas se encuentran en español.
 
@@ -178,7 +186,14 @@ objeto.1 <- 2
 objeto.1
 ```
 
+```{r}
+objeto.2
+```
+
+
 Ahora bien, ```objeto.1``` es 2. Pero ¿Qué ocurrió con ```objeto.2```? Este fue definido a partir de ```objeto.1``` cuando este era 50, entonces ¿mantuvo el valor de 150 o se convirtió automáticamente en 6? Puede checkearlo escribiendo su nombre en la consola (subventana de abajo) para hacer un checkeo rápido sin necesidad de crear un chunck.
+
+
 
 ```objeto.2``` devuelve 150. Esto demuestra que ```objeto.2``` (una vez creado) es independiente a los cambios que le ocurran a ```objeto.1```
 
@@ -204,12 +219,14 @@ Los corchetes ```[]``` que preceden al vector permiten acceder a un elemento esp
 De forma similar a lo visto anteriormente, se pueden realizar distintos tipos de operaciones sobre los vectores. Las operaciones son las mismas que para un valor único pero repetidos para toda la secuencia.
 
 Cree un nuevo chunck y multiplique todos los números del vector ```numeros_impares``` por 5 y haga la prueba de cuales de esos son más chicos que 10 en una sola línea.
-Luego, obtenga el número máximo y, por último, el mínimo del vector ```numeros_impares``` (puede realizar una búsqueda en Internet para aprender cómo se hace).
+Luego, obtenga el número máximo y, por último, el mínimo del vector ```numeros_impares``` (puede realizar una búsqueda en Internet para aprender cómo se hace), cada uno en una línea distinta.
 
 *Inserte chunck aquí* 
 
 ```{r}
-numeros_impares*5 < 10
+numeros_impares_5 <- numeros_impares*5
+numeros_impares_5<10
+
 max(numeros_impares)
 min(numeros_impares)
 ```
@@ -221,6 +238,7 @@ min(numeros_impares)
 numeros_impares <- c(1, 3, 5, NA, 9, 11)
 numeros_impares
 class(numeros_impares)
+
 numeros_impares*5 < 10
 max(numeros_impares)
 min(numeros_impares)
@@ -261,7 +279,7 @@ Cuando la tabla es muy grande, puede ser difícil observarla, por lo que se pued
 Para acceder a un elemento de la tabla, tal como ocurría con el vector se usan los corchetes ```[]```. A diferencia del vector, la tabla tiene filas y columnas, por lo que dentro del corchete hay que escribir el número de fila y el de columna del elemento al que se quiera acceder. Por ejemplo, el elemento "María" se encuentra en la fila 3 y columna 1 de la tabla ```tabla.domicilios```. También, se puede acceder a la columna a partir de su nombre. Estos ejemplos están reflejados en el siguiente chunck:
 
 ```{r}
-tabla.domicilios[3, 1]
+tabla.domicilios[3, ]
 tabla.domicilios[3, "Nombre"]
 ```
 
@@ -272,3 +290,28 @@ tabla.domicilios$Nombre
 ```
 
 Siendo que los data frames son los principales elementos de trabajo en R, tienen una muy gran cantidad de operadores y funciones para su manipulación. En los próximos módulos, trabajaremos casi exclusivamente con data frames, veremos algunas de sus operaciones posibles y entenderemos más a fondo la lógica del trabajo con bases de datos en R.
+
+
+
+```{r}
+tabla.domicilios$Localidad
+
+tabla.domicilios$Localidad == "Capital Federal"
+
+tabla.domicilios[tabla.domicilios$Localidad == "Capital Federal",]
+
+tabla.domicilios[tabla.domicilios$Localidad == "Capital Federal", "Nombre"]
+
+```
+
+```{r}
+#install.packages("tidyverse")
+library(tidyverse)
+
+tabla.domicilios %>% #agarro la tabla
+  filter(Localidad == "Capital Federal") %>% #filtro por localidad
+ select(Nombre) %>%
+  pull()
+
+```
+
